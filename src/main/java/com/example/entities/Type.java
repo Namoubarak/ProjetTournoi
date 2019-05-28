@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,7 +29,18 @@ private String label;
 private Groupe grp;
 private Date created_at;
 private Date updated_at;
+@PrePersist
+protected void onCreate() {
+    created_at = new Date();
+}
+@PreUpdate
+protected void onUpdate() {
+    updated_at = new Date();
+}
 @OneToMany(mappedBy = "type",fetch = FetchType.LAZY)
 private Collection<Equipe> liste_equipes;
+public int getresourceId() {
+	return id;
+}
 
 }

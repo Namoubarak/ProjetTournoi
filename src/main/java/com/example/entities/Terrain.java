@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -29,15 +31,24 @@ private String nom;
 	
 private String lieu;
 
-	@CreatedDate
+	
 private Date created_at;
-	@LastModifiedDate
+	
 private Date updated_at;
+@PrePersist
+protected void onCreate() {
+    created_at = new Date();
+}
+@PreUpdate
+protected void onUpdate() {
+    updated_at = new Date();
+}
 @OneToMany(mappedBy = "terr",fetch = FetchType.LAZY)
 private Collection<Matche> listematches;
-//public Long getId() {
-//	return id;
-//}
+
+public Long getresourceId() {
+	return id;
+}
 //public void setId(Long id) {
 //	this.id = id;
 //}

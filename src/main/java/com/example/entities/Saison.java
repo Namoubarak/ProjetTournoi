@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +26,18 @@ private String label;
 private Collection<Matche> liste_matches;
 private Date created_at;
 private Date updated_at;
+@PrePersist
+protected void onCreate() {
+    created_at = new Date();
+}
+@PreUpdate
+protected void onUpdate() {
+    updated_at = new Date();
+}
+public int getresourceId() {
+	return id;
+}
+
 
 
 }

@@ -17,6 +17,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -62,6 +64,18 @@ public class Matche implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "Saison")
 	private Saison saison;
+	@PrePersist
+	protected void onCreate() {
+	    created_at = new Date();
+	}
+	@PreUpdate
+	protected void onUpdate() {
+	    updated_at = new Date();
+	}
+	public int getresourceId() {
+		return id;
+	}
+
 
 
 }

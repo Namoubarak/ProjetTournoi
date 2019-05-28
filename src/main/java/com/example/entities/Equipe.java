@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,6 +37,16 @@ private Collection<Matche> matches_accueil;
 private Collection<Matche> matches_visiteur;
 @OneToMany(mappedBy = ("equipe"))
 private Collection<Joueur> liste_joueur;
-
+@PrePersist
+protected void onCreate() {
+    created_at = new Date();
+}
+@PreUpdate
+protected void onUpdate() {
+    updated_at = new Date();
+}
+public int getresourceId() {
+	return id;
+}
 
 }

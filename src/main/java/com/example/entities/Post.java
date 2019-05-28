@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +21,11 @@ public class Post implements Serializable{
 private int id;
 private String contenu;
 private Date created_at;
+@PrePersist
+protected void onCreate() {
+    created_at = new Date();
+}
+
 @ManyToOne
 @JoinColumn(name="User_id")
 private User owner;
@@ -47,5 +54,8 @@ public void setOwner(User owner) {
 	this.owner = owner;
 }
 
+public int getresourceId() {
+	return id;
+}
 
 }

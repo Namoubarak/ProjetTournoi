@@ -1,33 +1,26 @@
 package com.example.entities;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-@Entity @Data @NoArgsConstructor @AllArgsConstructor
-public class Groupe implements Serializable{
+@Entity @Data @AllArgsConstructor @NoArgsConstructor
+@DiscriminatorValue("Respo_equipe")
+public class Responsable_equipe extends Profil{
+
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String label;
-	@OneToMany(mappedBy = "grp",fetch = FetchType.LAZY)
-	private List<Type> types;
-	@ManyToOne
-	@JoinColumn(name="Saison")
-	private Saison s;
+	private String logo,nom,abbr,addresse,tel;
 	private Date created_at;
 	private Date updated_at;
 	@PrePersist
@@ -41,5 +34,6 @@ public class Groupe implements Serializable{
 	public int getresourceId() {
 		return id;
 	}
-
+	
+		
 }

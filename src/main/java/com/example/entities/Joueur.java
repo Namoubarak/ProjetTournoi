@@ -33,6 +33,9 @@ private Date date;
 private Equipe equipe;
 @OneToMany(mappedBy = "joueur",fetch = FetchType.LAZY)
 private Collection<But> buts;
+public int getresourceId() {
+	return id;
+}
 
 
 }
