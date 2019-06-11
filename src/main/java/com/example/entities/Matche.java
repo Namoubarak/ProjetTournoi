@@ -26,8 +26,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor
 public class Matche implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -74,6 +77,91 @@ public class Matche implements Serializable {
 	}
 	public int getresourceId() {
 		return id;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public int getScore_accueil() {
+		return score_accueil;
+	}
+	public void setScore_accueil(int score_accueil) {
+		this.score_accueil = score_accueil;
+	}
+	public int getScore_visiteur() {
+		return score_visiteur;
+	}
+	public void setScore_visiteur(int score_visiteur) {
+		this.score_visiteur = score_visiteur;
+	}
+	public Date getCreated_at() {
+		return created_at;
+	}
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
+	}
+	public Date getUpdated_at() {
+		return updated_at;
+	}
+	public void setUpdated_at(Date updated_at) {
+		this.updated_at = updated_at;
+	}
+	public Collection<Arbitre> getArbitres() {
+		return arbitres;
+	}
+	public void setArbitres(Collection<Arbitre> arbitres) {
+		this.arbitres = arbitres;
+	}
+	public Terrain getTerr() {
+		return terr;
+	}
+	public void setTerr(Terrain terr) {
+		this.terr = terr;
+	}
+	public Delegue getDelegue() {
+		return delegue;
+	}
+	public void setDelegue(Delegue delegue) {
+		this.delegue = delegue;
+	}
+	public Equipe getAccueil() {
+		return accueil;
+	}
+	public void setAccueil(Equipe accueil) {
+		this.accueil = accueil;
+	}
+	public Equipe getVisiteur() {
+		return visiteur;
+	}
+	public void setVisiteur(Equipe visiteur) {
+		this.visiteur = visiteur;
+	}
+	public Collection<But> getButs() {
+		return buts;
+	}
+	public void setButs(Collection<But> buts) {
+		this.buts = buts;
+	}
+	public Saison getSaison() {
+		return saison;
+	}
+	public void setSaison(Saison saison) {
+		this.saison = saison;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public Matche() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 

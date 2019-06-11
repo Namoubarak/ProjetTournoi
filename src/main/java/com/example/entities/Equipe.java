@@ -20,7 +20,7 @@ import javax.persistence.PreUpdate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-@Entity @Data @NoArgsConstructor @AllArgsConstructor
+@Entity 
 public class Equipe implements Serializable{
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 private int id;
